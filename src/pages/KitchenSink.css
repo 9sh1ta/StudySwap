@@ -1,0 +1,133 @@
+/* Layout for the /kitchen-sink review page only. */
+
+.ks { min-height: 100vh; }
+
+.ks-top {
+  position: sticky; top: 0; z-index: var(--z-sticky);
+  display: flex; align-items: center; justify-content: space-between; gap: var(--sp-4);
+  padding: var(--sp-3) var(--sp-5);
+  background: var(--paper);
+  border-bottom: 1px solid var(--rule);
+}
+.ks-mark {
+  width: 22px; height: 28px; flex: none;
+  border: 1px solid var(--ink);
+  border-left: 5px solid var(--accent);
+  border-radius: var(--r-sm);
+  background: var(--paper-raised);
+}
+.ks-title { font-size: var(--fs-lg); }
+
+.ks-layout {
+  display: grid;
+  grid-template-columns: 220px minmax(0, 1fr);
+  max-width: 1240px;
+  margin: 0 auto;
+}
+
+.ks-nav {
+  position: sticky; top: 64px;
+  align-self: start;
+  max-height: calc(100vh - 64px);
+  overflow-y: auto;
+  padding: var(--sp-6) var(--sp-5);
+}
+.ks-nav ol { list-style: none; margin: var(--sp-3) 0 0; padding: 0; display: flex; flex-direction: column; }
+.ks-nav a {
+  display: block;
+  padding: 5px var(--sp-2);
+  border-left: 2px solid transparent;
+  color: var(--ink-2);
+  font-size: var(--fs-sm);
+  text-decoration: none;
+  transition: background-color var(--dur) var(--ease), border-color var(--dur) var(--ease);
+}
+.ks-nav a:hover { color: var(--ink); background: var(--paper-sunk); border-left-color: var(--rule-strong); }
+.ks-nav .num { color: var(--ink-3); font-size: var(--fs-xs); margin-right: 6px; }
+
+.ks-main { padding: var(--sp-6) var(--sp-5) var(--sp-8); border-left: 1px solid var(--rule); min-width: 0; }
+
+.ks-section { padding: var(--sp-6) 0 var(--sp-7); border-bottom: 1px solid var(--rule); scroll-margin-top: 72px; }
+.ks-section:first-child { padding-top: 0; }
+.ks-section__head { display: flex; align-items: baseline; gap: var(--sp-3); margin-bottom: var(--sp-2); }
+.ks-section__head .num { font-size: var(--fs-sm); }
+.ks-note { max-width: 68ch; margin-bottom: var(--sp-5); }
+.ks-section__head + .stack { margin-top: var(--sp-5); }
+
+.ks-specimen { display: flex; flex-direction: column; gap: var(--sp-3); }
+
+.ks-cols, .ks-grid-2 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--sp-5) var(--sp-6); align-items: start; }
+.ks-grid-3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--sp-4); }
+
+.ks-hero-type {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: var(--fs-3xl);
+  letter-spacing: -0.03em;
+  line-height: 1.02;
+  font-variation-settings: 'opsz' 144;
+}
+
+/* Token specimens: each column sets its own data-theme. */
+.ks-themes { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--sp-4); }
+.ks-theme {
+  padding: var(--sp-5);
+  background: var(--paper);
+  color: var(--ink);
+  border: 1px solid var(--rule);
+  border-radius: var(--r-md);
+}
+.ks-swatches { list-style: none; margin: var(--sp-3) 0 0; padding: 0; display: flex; flex-direction: column; }
+.ks-swatches li {
+  display: grid; grid-template-columns: 28px 1fr auto; align-items: center; gap: var(--sp-3);
+  padding: 6px 0;
+  border-bottom: 1px solid var(--rule);
+}
+.ks-swatches li:last-child { border-bottom: 0; }
+.ks-swatch { width: 28px; height: 20px; border: 1px solid var(--rule-strong); border-radius: var(--r-sm); }
+.ks-spines { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--sp-2); margin-top: var(--sp-2); }
+.ks-spine {
+  padding: var(--sp-2) var(--sp-2) var(--sp-2) var(--sp-3);
+  border: 1px solid var(--rule);
+  border-left: 3px solid var(--sub);
+  border-radius: var(--r-sm);
+  background: var(--paper-raised);
+  color: var(--ink-2);
+}
+
+/* Mini index card used in the modal specimen; the real MaterialCard is Phase 3. */
+.ks-mini-card {
+  display: flex; flex-direction: column; gap: var(--sp-2);
+  padding: var(--sp-3) var(--sp-4);
+  background: var(--paper);
+  border: 1px solid var(--rule);
+  border-left: 3px solid var(--sub);
+  border-radius: var(--r-md);
+}
+
+.ks-skel-card {
+  display: flex; flex-direction: column; gap: var(--sp-3);
+  padding: var(--sp-4);
+  background: var(--paper-raised);
+  border: 1px solid var(--rule);
+  border-left: 3px solid var(--paper-sunk);
+  border-radius: var(--r-md);
+}
+
+.ks-foot { margin-top: var(--sp-6); }
+
+@media (max-width: 1023px) {
+  .ks-layout { grid-template-columns: minmax(0, 1fr); }
+  .ks-nav { display: none; }
+  .ks-main { border-left: 0; }
+  .ks-grid-3 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (max-width: 720px) {
+  .ks-top { padding: var(--sp-3) var(--sp-4); }
+  .ks-top .eyebrow { display: none; }
+  .ks-title { font-size: var(--fs-md); }
+  .ks-main { padding: var(--sp-5) var(--sp-4) var(--sp-7); }
+  .ks-cols, .ks-grid-2, .ks-grid-3, .ks-themes { grid-template-columns: minmax(0, 1fr); }
+  .ks-hero-type { font-size: var(--fs-2xl); }
+}

@@ -1,0 +1,118 @@
+/* ─────────────────────────────────────────────────────────────
+   Ink & Index — design tokens
+   Every colour, font, radius and spacing value in the app lives
+   here. Components reference these variables, never raw values.
+   ───────────────────────────────────────────────────────────── */
+
+:root {
+  color-scheme: light;
+
+  /* Paper */
+  --paper:        #F6F3EC;   /* page ground */
+  --paper-raised: #FCFAF5;   /* cards, panels — lighter than the page */
+  --paper-sunk:   #EEEAE0;   /* inputs, code blocks, table headers */
+
+  /* Ink */
+  --ink:          #191713;
+  --ink-2:        #514C44;
+  --ink-3:        #6F695F;   /* darkened from #8B8479 so 11px labels pass 4.5:1 */
+  --rule:         #DFD9CC;   /* every border in the app */
+  --rule-strong:  #C2BAA9;
+
+  /* One accent. Primary action, active nav, links. Nothing else. */
+  --accent:       #1F4B7A;   /* ink blue */
+  --accent-ink:   #163A60;   /* hover / pressed */
+  --accent-wash:  #E7EDF4;
+  --on-accent:    #FCFAF5;   /* text on a solid accent fill */
+
+  --ok:     #2E6B4F;
+  --warn:   #8A5A11;
+  --danger: #9B2C2C;
+
+  /* Subject coding — desaturated, printed-ink feel. Used ONLY on card
+     spine tabs and subject chips. Never as a background fill. */
+  --sub-1: #7A5C3E;  /* clay   */
+  --sub-2: #4E6B43;  /* moss   */
+  --sub-3: #44586B;  /* slate  */
+  --sub-4: #8A6E24;  /* ochre  */
+  --sub-5: #6B4459;  /* plum   */
+  --sub-6: #3E6B68;  /* teal   */
+
+  /* Ruled-paper motif — landing hero, empty states, upload dropzone only */
+  --ruled-line: color-mix(in srgb, var(--rule) 70%, transparent);
+  --ruled: repeating-linear-gradient(transparent 0 27px, var(--ruled-line) 27px 28px);
+
+  /* Type */
+  --font-display: 'Fraunces', Georgia, 'Times New Roman', serif;
+  --font-body:    'IBM Plex Sans', system-ui, -apple-system, sans-serif;
+  --font-mono:    'IBM Plex Mono', ui-monospace, 'SF Mono', monospace;
+
+  --fs-xs:   11px;
+  --fs-sm:   13px;
+  --fs-base: 15px;
+  --fs-md:   17px;
+  --fs-lg:   21px;
+  --fs-xl:   28px;
+  --fs-2xl:  38px;
+  --fs-3xl:  56px;
+
+  /* Radii — small on purpose. Nothing above 6px, ever. */
+  --r-sm: 2px;  --r-md: 4px;  --r-lg: 6px;
+
+  --sp-1: 4px;  --sp-2: 8px;  --sp-3: 12px; --sp-4: 16px;
+  --sp-5: 24px; --sp-6: 32px; --sp-7: 48px; --sp-8: 72px;
+
+  --ease: cubic-bezier(.2,.6,.3,1);
+  --dur: 140ms;
+
+  --z-sticky: 10;
+  --z-dropdown: 40;
+  --z-modal: 60;
+  --z-toast: 80;
+  --z-tooltip: 90;
+}
+
+[data-theme='dark'] {
+  color-scheme: dark;
+
+  --paper:        #1A1917;
+  --paper-raised: #232220;
+  --paper-sunk:   #141312;
+  --ink:          #EDE8DE;
+  --ink-2:        #ADA69A;
+  --ink-3:        #8C8579;   /* lifted from #777065 for small-label contrast */
+  --rule:         #343230;
+  --rule-strong:  #4A4744;
+  --accent:       #7FA8D4;
+  --accent-ink:   #9BBBDE;
+  --accent-wash:  #1E2A36;
+  --on-accent:    #141312;
+  --ruled-line:   color-mix(in srgb, var(--rule) 55%, transparent);
+
+  --ok:     #7DB394;
+  --warn:   #D1A45C;
+  --danger: #D98A7F;
+
+  /* Subject inks lifted so spines still read on charcoal — still matte. */
+  --sub-1: #A88665;
+  --sub-2: #82A077;
+  --sub-3: #7F95AB;
+  --sub-4: #B99A4E;
+  --sub-5: #A77C93;
+  --sub-6: #6FA19D;
+}
+
+/* ── Exam Mode (§7.6) ─────────────────────────────────────────
+   The single accent shifts from ink blue to ochre. Nothing else
+   about the design changes. */
+:root[data-exam='on'] {
+  --accent:      #8A5A11;
+  --accent-ink:  #6E480D;
+  --accent-wash: #F4EDE0;
+}
+:root[data-exam='on'][data-theme='dark'],
+[data-theme='dark']:root[data-exam='on'] {
+  --accent:      #D1A45C;
+  --accent-ink:  #E0B874;
+  --accent-wash: #33291A;
+}
